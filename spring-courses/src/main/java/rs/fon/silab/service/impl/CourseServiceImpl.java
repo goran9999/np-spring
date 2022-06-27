@@ -27,6 +27,8 @@ public class CourseServiceImpl implements CourseService {
 		this.courseConverter=courseConverter;
 	}
 
+	@Autowired
+	private SaveCoursesToFileImpl coursesToFileImpl;
 
 
 
@@ -40,7 +42,7 @@ public class CourseServiceImpl implements CourseService {
 					CourseDto courseDto = this.courseConverter.toDto(course);
 					foundCourses.add(courseDto);
 				});
-				
+				this.coursesToFileImpl.saveCoursesToFile(foundCourses);
 				return foundCourses;
 			} else {
 				throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No saved courses!");
