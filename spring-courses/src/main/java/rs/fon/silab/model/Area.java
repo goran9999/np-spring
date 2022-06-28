@@ -66,6 +66,9 @@ public class Area {
 	}
 
 	public void setClassesCount(int classesCount) {
+		if(classesCount<0) {
+			throw new IllegalArgumentException("Classes count can not be less than 0!");
+		}
 		this.classesCount = classesCount;
 	}
 
