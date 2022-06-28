@@ -106,6 +106,9 @@ public class Course {
 	}
 
 	public void setSemester(Semester semester) {
+		if(semester==null) {
+			throw new NullPointerException("Semester can not be null");
+		}
 		this.semester = semester;
 	}
 
