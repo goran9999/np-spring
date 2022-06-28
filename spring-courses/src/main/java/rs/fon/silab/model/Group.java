@@ -75,10 +75,10 @@ public class Group {
 
 	public void setName(String name) {
 		if(name==null) {
-			throw new NullPointerException();
+			throw new NullPointerException("Name can not be null!");
 		}
 		if(name.trim()=="") {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Name can not be empty!");
 		}
 		this.name = name;
 	}
@@ -99,6 +99,9 @@ public class Group {
 	}
 
 	public void setCreatedAt(Date createdAt) {
+		if(createdAt.getTime()>new Date().getTime()) {
+			throw new IllegalArgumentException("Birth date can not be in future!");
+		}
 		this.createdAt = createdAt;
 	}
 

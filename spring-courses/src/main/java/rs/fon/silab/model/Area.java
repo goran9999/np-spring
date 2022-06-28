@@ -38,6 +38,12 @@ public class Area {
 	}
 
 	public void setId(Long id) {
+		if(id==null) {
+			throw new NullPointerException();
+		}
+		if(id<0) {
+			throw new IllegalArgumentException();
+		}
 		this.id = id;
 	}
 

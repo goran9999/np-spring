@@ -53,30 +53,60 @@ public class Professor {
 		return id;
 	}
 	public void setId(Long id) {
+		if(id==null) {
+			throw new NullPointerException();
+		}
+		if(id<0) {
+			throw new IllegalArgumentException();
+		}
 		this.id = id;
 	}
 	public String getFirstName() {
+		
 		return firstName;
 	}
 	public void setFirstName(String firstName) {
+		if(firstName==null) {
+			throw new NullPointerException("Name can not be null!");
+		}
+		if(firstName.trim()=="") {
+			throw new IllegalArgumentException("Name can not be empty!");
+		}
 		this.firstName = firstName;
 	}
 	public String getLastName() {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
+		if(lastName==null) {
+			throw new NullPointerException("Name can not be null!");
+		}
+		if(lastName.trim()=="") {
+			throw new IllegalArgumentException("Name can not be empty!");
+		}
 		this.lastName = lastName;
 	}
 	public Date getBithDate() {
+		
 		return bithDate;
 	}
 	public void setBithDate(Date bithDate) {
+		if(bithDate.getTime()>new Date().getTime()) {
+			throw new IllegalArgumentException("Birth date can not be in future!");
+		}
 		this.bithDate = bithDate;
 	}
 	public DegreeLevel getDegreeLevel() {
+		
 		return degreeLevel;
 	}
 	public void setDegreeLevel(DegreeLevel degreeLevel) {
+		if(degreeLevel==null) {
+			throw new NullPointerException("Degree level can not be null!");
+		}
+		if(!(degreeLevel instanceof DegreeLevel)) {
+			throw new IllegalArgumentException("Wrong degree level input!");
+		}
 		this.degreeLevel = degreeLevel;
 	}
 	@Override

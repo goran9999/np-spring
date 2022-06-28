@@ -47,11 +47,18 @@ public class Course {
 	}
 
 	public String getImageUrl() {
+		
 		return imageUrl;
 	}
 
 	public void setImageUrl(String imageUrl) {
+		if(imageUrl==null) {
+			throw new NullPointerException("Image url can not be null!");
+		}
 		this.imageUrl = imageUrl;
+		if(imageUrl.trim()=="") {
+			throw new IllegalArgumentException("Image url can note be empty!");
+		}
 	}
 
 	public Course(Long id, String courseName, Semester semester, Date startDate, Date endDate, String imageUrl,
@@ -73,7 +80,12 @@ public class Course {
 	}
 
 	public void setId(Long id) {
-
+		if(id==null) {
+			throw new NullPointerException();
+		}
+		if(id<0) {
+			throw new IllegalArgumentException();
+		}
 		this.id = id;
 	}
 

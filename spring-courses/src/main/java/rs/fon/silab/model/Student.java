@@ -46,6 +46,12 @@ public class Student {
 	}
 
 	public void setId(Long id) {
+		if(id==null) {
+			throw new NullPointerException();
+		}
+		if(id<0) {
+			throw new IllegalArgumentException();
+		}
 		this.id = id;
 	}
 
@@ -54,14 +60,27 @@ public class Student {
 	}
 
 	public void setFirstName(String firstName) {
+		if(firstName==null) {
+			throw new NullPointerException("Name can not be null!");
+		}
+		if(firstName.trim()=="") {
+			throw new IllegalArgumentException("Name can not be empty!");
+		}
 		this.firstName = firstName;
 	}
 
 	public String getLastName() {
+		
 		return lastName;
 	}
 
 	public void setLastName(String lastName) {
+		if(lastName==null) {
+			throw new NullPointerException("Name can not be null!");
+		}
+		if(lastName.trim()=="") {
+			throw new IllegalArgumentException("Name can not be empty!");
+		}
 		this.lastName = lastName;
 	}
 
@@ -70,6 +89,9 @@ public class Student {
 	}
 
 	public void setBirthDate(Date birthDate) {
+		if(birthDate.getTime()>new Date().getTime()) {
+			throw new IllegalArgumentException("Birth date can not be in future!");
+		}
 		this.birthDate = birthDate;
 	}
 
@@ -78,6 +100,9 @@ public class Student {
 	}
 
 	public void setStudentStatus(StudentStatus studentStatus) {
+		if(!(studentStatus instanceof StudentStatus)) {
+			throw new IllegalArgumentException("Wrong student status input!");
+		}
 		this.studentStatus = studentStatus;
 	}
 
@@ -86,6 +111,9 @@ public class Student {
 	}
 
 	public void setGroups(List<Group> groups) {
+		if(groups.contains(null)) {
+			throw new NullPointerException("Null can not be stored as group!");
+		}
 		this.groups = groups;
 	}
 
