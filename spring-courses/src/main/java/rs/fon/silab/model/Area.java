@@ -52,6 +52,12 @@ public class Area {
 	}
 
 	public void setAreaName(String areaName) {
+		if(areaName==null) {
+			throw new NullPointerException("Name can not be null!");
+		}
+		if(areaName.trim()=="") {
+			throw new IllegalArgumentException("Name can not be empty!");
+		}
 		this.areaName = areaName;
 	}
 
@@ -68,6 +74,9 @@ public class Area {
 	}
 
 	public void setCourse(Course course) {
+		if(course.getId()==null) {
+			throw new NullPointerException("Course can not be null");
+		}
 		this.course = course;
 	}
 
