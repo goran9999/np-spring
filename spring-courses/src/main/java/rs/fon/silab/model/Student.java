@@ -100,8 +100,8 @@ public class Student {
 	}
 
 	public void setStudentStatus(StudentStatus studentStatus) {
-		if(!(studentStatus instanceof StudentStatus)) {
-			throw new IllegalArgumentException("Wrong student status input!");
+		if(studentStatus==null) {
+			throw new NullPointerException("Wrong student status input!");
 		}
 		this.studentStatus = studentStatus;
 	}
