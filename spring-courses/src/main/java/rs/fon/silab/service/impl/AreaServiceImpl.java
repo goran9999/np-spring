@@ -48,19 +48,19 @@ public class AreaServiceImpl implements AreaService {
 	@Override
 	public AreaDto saveArea(AreaDto areaDto) {
 		try {
-			Area area = this.areaConverter.toEntity(areaDto);
 			CourseDto courseDto = this.courseServiceImpl.getOneCourse(areaDto.getCourseId());
 			if(courseDto==null) {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Course with given id does not exist!");
 			}
-			area.setCourse(new Course(courseDto.getId(), courseDto.getCourseName(), courseDto.getSemester(),
-					courseDto.getStartDate(), courseDto.getEndDate(), courseDto.getImageUrl(),courseDto.getGroupCount(), courseDto.getLevel()));
+			areaDto.setCourseId(courseDto.getId());
+			Area area = this.areaConverter.toEntity(areaDto);
 			Area savedArea = this.areaRepository.save(area);
 			if (savedArea == null) {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Problem with saving area");
 			}
 			return this.areaConverter.toDto(savedArea);
 		} catch (Exception e) {
+			System.out.println(e);
 			throw e;
 		}
 	}

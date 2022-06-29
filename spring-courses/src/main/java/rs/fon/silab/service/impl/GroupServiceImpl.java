@@ -55,12 +55,11 @@ public class GroupServiceImpl implements GroupService{
 		//TODO:check problem with coruseConverter
 		try {
 			CourseDto courseDto=this.courseServiceImpl.getOneCourse(group.getCourse().getId());
-			System.out.println(this.courseConverter);
-			//Course course=this.courseConverter.toEntity(courseDto);
+			group.setCourse(courseDto);
 			Group g=this.groupConverter.toEntity(group);
-			//g.setCourse(course);
-			g.setCourse(new Course(courseDto.getId(), courseDto.getCourseName(), courseDto.getSemester(),
-					courseDto.getStartDate(), courseDto.getEndDate(), courseDto.getImageUrl(),courseDto.getGroupCount(), courseDto.getLevel()));
+//			//g.setCourse(course);
+//			g.setCourse(new Course(Long.valueOf(courseDto.getId()), courseDto.getCourseName(), courseDto.getSemester(),
+//					courseDto.getStartDate(), courseDto.getEndDate(), courseDto.getImageUrl(),courseDto.getGroupCount(), courseDto.getLevel()));
 			Group savedGroup=this.groupRepository.save(g);
 			return this.groupConverter.toDto(savedGroup);
 		} catch (Exception e) {

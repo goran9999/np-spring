@@ -20,11 +20,13 @@ public class GroupConverter implements Converter<GroupDto, Group> {
 
 	@Override
 	public Group toEntity(GroupDto d) {
+		Course c=new Course();
+		c.setId(d.getCourse().getId());
 		Group g=new Group();
 		g.setName(d.getGroupName());
 		g.setCreatedAt(d.getCreatedAt());
 		g.setStudentsCount(d.getStudentsCount());
-		g.setCourse(courseConverter.toEntity(d.getCourse()));
+		g.setCourse(c);
 		return g;
 	}
 

@@ -75,7 +75,8 @@ public class CourseServiceImpl implements CourseService {
 			Course savedCourse = this.courseRepository.save(newCourse);
 			return this.courseConverter.toDto(savedCourse);
 		} catch (Exception e) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Problem with saving course!", e);
+			System.out.println(e.getMessage());
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage() );
 		}
 
 	}

@@ -32,7 +32,6 @@ public class GroupController {
 	
 	@PostMapping("save")
 	 GroupDto saveGroup(@RequestBody GroupDto group) {
-		System.out.println("AAA");
 		return this.groupService.saveGroup(group);
 	}
 	

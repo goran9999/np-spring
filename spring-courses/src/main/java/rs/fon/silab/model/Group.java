@@ -3,6 +3,8 @@ package rs.fon.silab.model;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,6 +32,7 @@ public class Group {
 	
 	private int studentsCount;
 	
+	@Column(nullable = true)
 	private Date createdAt;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -100,7 +103,7 @@ public class Group {
 
 	public void setCreatedAt(Date createdAt) {
 		if(createdAt.getTime()>new Date().getTime()) {
-			throw new IllegalArgumentException("Birth date can not be in future!");
+			throw new IllegalArgumentException("Date creation can not be in future!");
 		}
 		this.createdAt = createdAt;
 	}
