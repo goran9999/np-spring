@@ -1,3 +1,5 @@
 [
-  "{\n  \"id\": 1,\n  \"courseName\": \"Angular\",\n  \"semester\": \"summer\",\n  \"startDate\": \"Mar 2, 2021, 1:00:00 AM\",\n  \"endDate\": \"Mar 5, 2023, 1:00:00 AM\",\n  \"level\": \"begginer\",\n  \"groupCount\": 1\n}"
+  "{\n  \"id\": 1,\n  \"courseName\": \"test1\",\n  \"semester\": \"summer\",\n  \"startDate\": \"Jun 29, 2022, 11:13:13 PM\",\n  \"endDate\": \"Jun 29, 2022, 11:13:13 PM\",\n  \"level\": \"test\",\n  \"groupCount\": 0\n}",
+  "{\n  \"id\": 2,\n  \"courseName\": \"test2\",\n  \"semester\": \"summer\",\n  \"startDate\": \"Jun 29, 2022, 11:13:13 PM\",\n  \"endDate\": \"Jun 29, 2022, 11:13:13 PM\",\n  \"level\": \"test\",\n  \"groupCount\": 0\n}",
+  "{\n  \"id\": 3,\n  \"courseName\": \"test3\",\n  \"semester\": \"summer\",\n  \"startDate\": \"Jun 29, 2022, 11:13:13 PM\",\n  \"endDate\": \"Jun 29, 2022, 11:13:13 PM\",\n  \"level\": \"test\",\n  \"groupCount\": 0\n}"
 ]
