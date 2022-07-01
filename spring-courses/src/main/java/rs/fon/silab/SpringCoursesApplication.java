@@ -10,6 +10,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan(basePackages = "rs.fon.silab")
 @EntityScan("rs.fon.silab.model")
 @EnableJpaRepositories("rs.fon.silab.repository")
+/**
+ * 
+ * @author goran
+ * Entry point in spring boot application
+ */
 public class SpringCoursesApplication {
 
 	public static void main(String[] args) {
