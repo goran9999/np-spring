@@ -7,9 +7,19 @@ import org.springframework.stereotype.Component;
 import rs.fon.silab.dto.CourseDto;
 import rs.fon.silab.model.Course;
 
+/**
+ * 
+ * @author goran
+ * 
+ * Class used to enable converting between CourseDto and Course objects
+ *
+ */
 @Component
 public class CourseConverter implements Converter<CourseDto, Course>{
 
+	/**
+	 * Method that converts Course to CourseDto(data format that can be sent through network)
+	 */
 	@Override
 	public CourseDto toDto(Course e) {
 		CourseDto dto=new CourseDto();
@@ -25,6 +35,9 @@ public class CourseConverter implements Converter<CourseDto, Course>{
 		return dto;
 	}
 
+	/**
+	 * Method that converts CourseDto to Course(data format that can be stored in database)
+	 */
 	@Override
 	public Course toEntity(CourseDto d) {
 		System.out.println("CONVERTING...");
