@@ -1,6 +1,7 @@
 package rs.fon.silab.service.impl;
 
-import java.util.ArrayList;
+
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -41,7 +42,7 @@ public class ProfessorServiceImpl implements ProfessorService {
 	public ProfessorDto saveProfessor(ProfessorDto professor) {
 		try {
 			Professor p=this.professorConverter.toEntity(professor);
-			List<Group> groups=new ArrayList<>();
+			List<Group> groups=new LinkedList<>();
 			for (GroupDto group:professor.getGroups()) {
 				try {
 					GroupDto foundGroup=this.groupServiceImpl.getGroup(group.getId());
@@ -67,7 +68,7 @@ public class ProfessorServiceImpl implements ProfessorService {
 	public List<ProfessorDto> getAllProfessors() {
 		try {
 			List<Professor>professors=this.professorRepository.findAll();
-			List<ProfessorDto>professorsDto=new ArrayList<>();
+			List<ProfessorDto>professorsDto=new LinkedList<>();
 			professors.forEach((professor)->{
 				ProfessorDto p=this.professorConverter.toDto(professor);
 				professorsDto.add(p);
@@ -100,7 +101,7 @@ public class ProfessorServiceImpl implements ProfessorService {
 			updatedProfessor.setDegreeLevel(professor.getDegreeLevel());
 			updatedProfessor.setFirstName(professor.getFirstName());
 			updatedProfessor.setLastName(professor.getLastName());
-			List<Group> groups=new ArrayList<>();
+			List<Group> groups=new LinkedList<>();
 			for (GroupDto group:professor.getGroups()) {
 				try {
 					GroupDto foundGroup=this.groupServiceImpl.getGroup(group.getId());

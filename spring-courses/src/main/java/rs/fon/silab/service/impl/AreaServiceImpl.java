@@ -1,6 +1,7 @@
 package rs.fon.silab.service.impl;
 
-import java.util.ArrayList;
+
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,7 +70,7 @@ public class AreaServiceImpl implements AreaService {
 	public List<AreaDto> getAllAreas() {
 		try {
 			List<Area> areas = this.areaRepository.findAll();
-			List<AreaDto> areaDtos = new ArrayList<>();
+			List<AreaDto> areaDtos = new LinkedList<>();
 			areas.forEach((area) -> {
 				AreaDto convertedArea = this.areaConverter.toDto(area);
 				areaDtos.add(convertedArea);

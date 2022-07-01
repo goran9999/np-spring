@@ -1,6 +1,7 @@
 package rs.fon.silab.service.impl;
 
-import java.util.ArrayList;
+
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class StudentServiceImpl implements StudentService {
 	public StudentDto saveStudent(StudentDto studentDto) {
 		try {
 			Student student = this.studentConverter.toEntity(studentDto);
-			List<Group> groups = new ArrayList<>();
+			List<Group> groups = new LinkedList<>();
 			if (studentDto.getId() != null) {
 				Student existingStudent = this.studentRepository.findById(studentDto.getId()).get();
 				if (existingStudent != null) {
@@ -82,7 +83,7 @@ public class StudentServiceImpl implements StudentService {
 	public List<StudentDto> getStudents() {
 		try {
 			List<Student> students = this.studentRepository.findAll();
-			List<StudentDto> studentsDto = new ArrayList<>();
+			List<StudentDto> studentsDto = new LinkedList<>();
 			students.forEach((student) -> {
 				StudentDto dto = this.studentConverter.toDto(student);
 				studentsDto.add(dto);
@@ -105,7 +106,7 @@ public class StudentServiceImpl implements StudentService {
 			student.setFirstName(studentDto.getFirstName());
 			student.setLastName(studentDto.getLastName());
 			student.setStudentStatus(studentDto.getStudentStatus());
-			List<Group> groups = new ArrayList<>();
+			List<Group> groups = new LinkedList<>();
 			for (GroupDto dto : studentDto.getGroups()) {
 				try {
 					GroupDto g = this.groupServiceImpl.getGroup(dto.getId());

@@ -1,6 +1,7 @@
 package rs.fon.silab.service.impl;
 
-import java.util.ArrayList;
+
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +40,7 @@ public class GroupServiceImpl implements GroupService{
 	public List<GroupDto> getAllGroups() {
 		try {
 			List<Group>groups=this.groupRepository.findAll();
-			List<GroupDto>groupsDto=new ArrayList<>();
+			List<GroupDto>groupsDto=new LinkedList<>();
 			groups.forEach((group)->{
 				GroupDto dto=this.groupConverter.toDto(group);
 				groupsDto.add(dto);

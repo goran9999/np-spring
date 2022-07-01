@@ -1,6 +1,7 @@
 package rs.fon.silab.service.impl;
 
-import java.util.ArrayList;
+
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,7 +38,7 @@ public class CourseServiceImpl implements CourseService {
 		try {
 			List<Course> courses = this.courseRepository.findAll();
 			if (courses.size() > 0) {
-				List<CourseDto> foundCourses = new ArrayList<>();
+				List<CourseDto> foundCourses = new LinkedList<>();
 				courses.forEach((course) -> {
 					CourseDto courseDto = this.courseConverter.toDto(course);
 					foundCourses.add(courseDto);
