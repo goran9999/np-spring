@@ -18,11 +18,25 @@ import rs.fon.silab.model.Student;
 import rs.fon.silab.repository.StudentRepository;
 import rs.fon.silab.service.StudentService;
 
+/**
+ * @author goran
+ * 
+ * Service implementation which contains business logic for student entity
+ */
 @Service
 public class StudentServiceImpl implements StudentService {
 
+	/**
+	 * Repository interface used for database interaction
+	 */
 	private final StudentRepository studentRepository;
+	/**
+	 * Group service implementation used to fetch data from group table
+	 */
 	private final GroupServiceImpl groupServiceImpl;
+	/**
+	 * Class used to convert group and groupDto
+	 */
 	private final GroupConverter groupConverter;
 
 	@Autowired
@@ -33,9 +47,18 @@ public class StudentServiceImpl implements StudentService {
 		this.groupConverter = groupConverter;
 	}
 
+	/**
+	 * Class used to convert student and studentDto
+	 */
 	@Autowired
 	StudentConverter studentConverter;
 
+	/**
+	 * @param StudentDto - StudentDto object we want to save in database
+	 * @return StudentDto - StudentDto object which represents newly saved entity in db
+	 * @throws  {@link ResponseStatusException} - if there is problem with saving student in db
+	 * 
+	 */
 	@Override
 	public StudentDto saveStudent(StudentDto studentDto) {
 		try {
@@ -65,6 +88,16 @@ public class StudentServiceImpl implements StudentService {
 		}
 	}
 
+
+	/**
+	 * @param id of student we want to delete from database
+	 * 
+	 * @return 
+	 * <ul>
+	 * <li>true-if student is successfully deleted</li>
+	 * <li>false-if there was a problem deleting student</li>
+	 * </ul>
+	 */
 	@Override
 	public boolean deleteStudent(Long id) {
 		try {
@@ -79,6 +112,9 @@ public class StudentServiceImpl implements StudentService {
 		}
 	}
 
+	/**
+	 * @return List of all professors found in database
+	 */
 	@Override
 	public List<StudentDto> getStudents() {
 		try {
@@ -94,6 +130,11 @@ public class StudentServiceImpl implements StudentService {
 		}
 	}
 
+	/**
+	 * @param StudentDto object with existing id an updated data 
+	 * @return StudentDto - Updated student entity represented with ProfessorDto
+	 * @throws {@link ResponseStatusException} - if student with given id does not exist in db
+	 */
 	@Override
 	public StudentDto updateStudent(StudentDto studentDto) {
 		try {
@@ -125,6 +166,11 @@ public class StudentServiceImpl implements StudentService {
 		}
 	}
 
+	/**
+	 * @param studentId - id of student we want to fetch from database
+	 * @return StudentDto - StudentDto object with specific given id
+	 * 
+	 */
 	@Override
 	public StudentDto getStudent(Long id) {
 		try {

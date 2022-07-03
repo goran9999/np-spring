@@ -20,11 +20,26 @@ import rs.fon.silab.model.Professor;
 import rs.fon.silab.repository.ProfessorRepository;
 import rs.fon.silab.service.ProfessorService;
 
+/**
+ * @author goran
+ * 
+ * Service implementation which contains business logic for professor entity
+ */
 @Service
 public class ProfessorServiceImpl implements ProfessorService {
 	
+	/**
+	 * Repository interface used for database interaction
+	 */
 	private final ProfessorRepository professorRepository;
+	/**
+	 * Group service implementation used to fetch data from group table
+	 */
 	private final GroupServiceImpl groupServiceImpl;
+	
+	/**
+	 * Class used to convert group and groupDto
+	 */
 	private final GroupConverter groupConverter;
 	
 	@Autowired
@@ -34,10 +49,20 @@ public class ProfessorServiceImpl implements ProfessorService {
 		this.groupConverter=groupConverter;
 	}
 	
+	
+	/**
+	 * Class used to convert professor and professorDto
+	 */
 	@Autowired
 	private ProfessorConverter professorConverter;
 	
 
+	/**
+	 * @param ProfessorDto - ProfessorDto object we want to save in database
+	 * @return ProfessorDto - ProfessorDto object which represents newly saved entity in db
+	 * @throws  {@link ResponseStatusException} - if there is problem with saving professor in db
+	 * 
+	 */
 	@Override
 	public ProfessorDto saveProfessor(ProfessorDto professor) {
 		try {
@@ -64,6 +89,9 @@ public class ProfessorServiceImpl implements ProfessorService {
 		}
 	}
 
+	/**
+	 * @return List of all professors found in database
+	 */
 	@Override
 	public List<ProfessorDto> getAllProfessors() {
 		try {
@@ -79,6 +107,12 @@ public class ProfessorServiceImpl implements ProfessorService {
 		}
 	}
 
+
+	/**
+	 * @param professorId - id of professor we want to fetch from database
+	 * @return ProfessorDto - ProfessorDto object with specific given id
+	 * 
+	 */
 	@Override
 	public ProfessorDto getProfessor(Long id) {
 		try {
@@ -89,6 +123,11 @@ public class ProfessorServiceImpl implements ProfessorService {
 		}
 	}
 
+	/**
+	 * @param ProfessorDto object with existing id an updated data 
+	 * @return ProfessorDto - Updated professor entity represented with ProfessorDto
+	 * @throws {@link ResponseStatusException} - if professor with given id does not exist in db
+	 */
 	@Override
 	public ProfessorDto updateProfessor(ProfessorDto professor) {
 		try {
@@ -119,7 +158,15 @@ public class ProfessorServiceImpl implements ProfessorService {
 			throw e;
 		}
 	}
-
+	/**
+	 * @param id of professor we want to delete from database
+	 * 
+	 * @return 
+	 * <ul>
+	 * <li>true-if professor is successfully deleted</li>
+	 * <li>false-if there was a problem deleting professor</li>
+	 * </ul>
+	 */
 	@Override
 	public boolean deleteProfessor(Long id) {
 		try {

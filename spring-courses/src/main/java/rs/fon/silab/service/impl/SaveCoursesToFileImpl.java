@@ -18,10 +18,19 @@ import com.google.gson.JsonArray;
 
 import rs.fon.silab.dto.CourseDto;
 
+/**
+ * 
+ * @author goran
+ * Service implementation class used to store data in json file
+ */
 @Component
 public class SaveCoursesToFileImpl {
 
 	
+	/**
+	 * 
+	 * @param courseDtos - List of courseDto object we want to store in file
+	 */
 	void saveCoursesToFile(List<CourseDto> courseDtos) {
 
 			Gson gson=new GsonBuilder().setPrettyPrinting().create();
