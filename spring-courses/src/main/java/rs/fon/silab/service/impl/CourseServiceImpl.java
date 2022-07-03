@@ -16,10 +16,21 @@ import rs.fon.silab.model.Course;
 import rs.fon.silab.repository.CourseRepository;
 import rs.fon.silab.service.CourseService;
 
+/**
+ * @author goran
+ * 
+ * Service implementation which contains business logic for course entity
+ */
 @Service
 public class CourseServiceImpl implements CourseService {
 
+	/**
+	 * Repository interface used for database interaction
+	 */
 	private CourseRepository courseRepository;
+	/**
+	 * Class used to convert course and coursedto
+	 */
 	private CourseConverter courseConverter;
 	
 	@Autowired
@@ -28,11 +39,19 @@ public class CourseServiceImpl implements CourseService {
 		this.courseConverter=courseConverter;
 	}
 
+	/**
+	 * Service class used to save courses in .json file
+	 */
 	@Autowired
 	private SaveCoursesToFileImpl coursesToFileImpl;
 
 
 
+
+	/**
+	 * @return List of all courses found in database
+	 * @throws - {@link ResponseStatusException} - if there is no saved courses in db
+	 */
 	@Override
 	public List<CourseDto> getAllCourses() {
 		try {
@@ -54,6 +73,11 @@ public class CourseServiceImpl implements CourseService {
 		}
 	}
 
+	/**
+	 * @param courseId - id of course we want to fetch from database
+	 * @return CourseDto - CourseDto object with specific given id
+	 * @throws  {@link ResponseStatusException} if course is not found in database or there is problem with loading course
+	 */
 	@Override
 	public CourseDto getOneCourse(Long courseId) {
 		try {
@@ -68,6 +92,12 @@ public class CourseServiceImpl implements CourseService {
 		}
 	}
 
+	/**
+	 * @param CourseDto - CourseDto object we want to save in database
+	 * @return CourseDto - CourseDto object which represents newly saved entity in db
+	 * @throws  {@link ResponseStatusException} - if there is problem with saving course in db
+	 * 
+	 */
 	@Override
 	public CourseDto saveCourse(CourseDto course) {
 

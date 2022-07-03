@@ -18,21 +18,46 @@ import rs.fon.silab.model.Course;
 import rs.fon.silab.repository.AreaRepository;
 import rs.fon.silab.service.AreaService;
 
+/**
+ * @author goran
+ * 
+ * Service implementation which contains business logic for area entity
+ */
 @Service
 public class AreaServiceImpl implements AreaService {
 
+	/**
+	 * Repository interface used for database interaction
+	 */
 	private final AreaRepository areaRepository;
+	/**
+	 * Course service implementation used to fetch data from course table
+	 */
 	private final CourseServiceImpl courseServiceImpl;
 
+	/**
+	 * Parameter constructor
+	 * @param areaRepository
+	 * @param courseServiceImpl
+	 */
 	@Autowired
 	public AreaServiceImpl(final AreaRepository areaRepository, final CourseServiceImpl courseServiceImpl) {
 		this.areaRepository = areaRepository;
 		this.courseServiceImpl = courseServiceImpl;
 	}
 
+	/**
+	 * Class used to convert area and areadto
+	 */
 	@Autowired
 	AreaConverter areaConverter;
 
+	/**
+	 * @param areaId - id of area we want to fetch from database
+	 * @return AreaDto - AreaDto object with specific given id
+	 * @throws  {@link ResponseStatusException} if area is not found in database
+	 */
+	
 	@Override
 	public AreaDto getArea(Long areaId) {
 		try {
@@ -46,6 +71,15 @@ public class AreaServiceImpl implements AreaService {
 		}
 	}
 
+	/**
+	 * @param AreaDto - AreaDto object we want to save in database
+	 * @return AreaDto - AreaDto object which represents newly saved entity in db
+	 * @throws  {@link ResponseStatusException}
+	 * <ul>
+	 * <li>if related course does not exist</li>
+	 * <li>if there is problem with savind area in databaset</li>
+	 * </ul>
+	 */
 	@Override
 	public AreaDto saveArea(AreaDto areaDto) {
 		try {
@@ -66,6 +100,9 @@ public class AreaServiceImpl implements AreaService {
 		}
 	}
 
+	/**
+	 * @return List of all areas found in database
+	 */
 	@Override
 	public List<AreaDto> getAllAreas() {
 		try {
